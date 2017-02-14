@@ -9,8 +9,8 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 app = Flask(__name__)
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
+#app.logger.addHandler(logging.StreamHandler(sys.stdout))
+#app.logger.setLevel(logging.ERROR)
 app.secret_key = 'MY_SUPER_SECRET_KEY'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 from database_setup import *
