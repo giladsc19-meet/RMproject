@@ -32,7 +32,13 @@ def home():
 	if 'user_id' not in login_session:
 		return render_template('home_page.html', nav_fix = True)
 	else:
-		return render_template('home_page.html')
+		user = dbsession.query(User).filter_by(id = login_session['user_id']).first()
+		if user.profile_pic!=None:
+			profile_pic_path = url_for('uploaded_file', filename=user.profile_pic)
+		elif user.profile_pic==None:
+			default_profile_pic = url_for('uploaded_file', filename='None_.jpg')
+			profile_pic_path = default_profile_pic
+		return render_template('home_page.html', user = user, profile_pic_path = profile_pic_path)
 
 @app.route('/signup' , methods=['GET', 'POST'])
 def sign_up():
