@@ -29,7 +29,10 @@ def allowed_file(filename):
 
 @app.route('/')
 def home():
-	return render_template('home_page.html')
+	if 'user_id' not in login_session:
+		return render_template('home_page.html', nav_fix = True)
+	else:
+		return render_template('home_page.html')
 
 @app.route('/signup' , methods=['GET', 'POST'])
 def sign_up():
