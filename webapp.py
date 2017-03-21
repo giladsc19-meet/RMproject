@@ -29,8 +29,9 @@ def allowed_file(filename):
 
 @app.route('/')
 def home():
+	hospital = dbsession.query(Hospital).filter_by(id = Hospital.id).all()
 	if 'user_id' not in login_session:
-		return render_template('home_page.html', nav_fix = True)
+		return render_template('home_page.html', nav_fix = True, hospital = hospital, hospital_id = 0)
 	else:
 		user = dbsession.query(User).filter_by(id = login_session['user_id']).first()
 		if user.profile_pic!=None:
@@ -38,7 +39,7 @@ def home():
 		elif user.profile_pic==None:
 			default_profile_pic = url_for('uploaded_file', filename='None_.jpg')
 			profile_pic_path = default_profile_pic
-		return render_template('home_page.html', user = user, profile_pic_path = profile_pic_path)
+		return render_template('home_page.html', user = user, profile_pic_path = profile_pic_path, hospital = hospital, hospital_id = 0)
 
 @app.route('/signup' , methods=['GET', 'POST'])
 def sign_up():
@@ -136,6 +137,21 @@ def edit_profile(user_id):
 			# user.profile_pic= request.files['profile_pic']
 			dbsession.commit()
 			return redirect(url_for('my_profile'))
+
+@app.route('/hospital/<int:hospital_id>', methods=['GET', 'POST'])
+def hospital(hospital_id):
+	hospital = dbsession.query(Hospital).filter_by(id = hospital_id).first()
+	if (request.method == 'GET'):
+		if 'user_id' not in login_session:
+			return render_template('hospital.html', nav_fix = True, hospital = hospital, hospital_id = hospital_id)
+		else:
+			user = dbsession.query(User).filter_by(id = login_session['user_id']).first()
+			if user.profile_pic!=None:
+				profile_pic_path = url_for('uploaded_file', filename=user.profile_pic)
+			elif user.profile_pic==None:
+				default_profile_pic = url_for('uploaded_file', filename='None_.jpg')
+				profile_pic_path = default_profile_pic
+			return render_template('hospital.html', user = user, profile_pic_path = profile_pic_path, hospital = hospital, hospital_id = hospital_id)
 
 @app.route('/logout')
 def logout():

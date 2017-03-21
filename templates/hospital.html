@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>home page</title>
+	<title>{{hospital.name}}</title>
 	<script src="{{ url_for('static', filename='jquery.js')}}"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}" media="screen and (max-width: 500px)">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}" media="screen and (max-width: 770px)">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='bootstarp.css') }}"> 
 	<script src="{{ url_for('static', filename='bootstarp.js')}}"></script> 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -55,38 +53,6 @@
   </div>
 </nav>
 <br><br><br>
-<div class="container container-phone">
-	<div class="row">
-{%for hosp in hospital%}
-		<h3><a href="{{url_for('hospital', hospital_id = hosp.id)}}"><div class="col-xs-4 col-md-4" style="background-color:#FF754F; padding-top:20px; margin-top:15px;"><center>{{hosp.name}}
-    {%if hosp.availability=='1'%}
-        <p class="status-dot" style="color:#30BF2D; font-size:20px; padding-top:120px;"> &#9673; </p>
-    {%elif hosp.availability=='2'%}
-        <p class="status-dot" style="color:#F7E94C; font-size:20px; padding-top:120px;"> &#9673; </p>
-    {%elif hosp.availability=='3'%}
-        <p class="status-dot" style="color:#ED1C24; font-size:20px; padding-top:120px;"> &#9673; </p>
-    {%endif%}
-    </center> </h3>
-    </a>
-{%endfor%}
-  </div>
-</div>
-<!--  		<div class="col-xs-4 col-md-4" style="background-color:#FF754F;">.col-sm-4</div>
-		<div class="col-xs-4 col-md-4" style="background-color:#FF754F; margin-right:0px;">.col-sm-4</div>
-	</div> -->
-<!-- 	{% for buisness in buisnesses %}
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail" style="padding-left:0px; padding-right:0px; padding-top:0px; padding-bottom:0px; border-left-width:0px; border-right-width:0px; border-top-width:0px; border-bottom-width:0px;">
-      <div class="div-posts">
-        <h3>{{ post.title }} by {{post.person.name}}</h3>
-        <p>{{ post.text }}</p>
-        {% if user and post.person.id==user.id %}
-        <p><a href="{{ url_for('EditPost', post_id=post.id, user_id=user.id) }}" class="btn btn-primary" role="button">Edit</a></p>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-{% endfor %} -->
-</div>
+<h1><b><u><i>{{ hospital.name }}</i></u></b></center></h1>
 </body>
 </html>

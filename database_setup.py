@@ -20,20 +20,21 @@ class User(Base):
 	profession = Column(String)
 	about_me = Column(String)
 	profile_pic = Column(String, unique=True)
-	course = relationship("Course", uselist=True)
+	course = relationship("Hospital", uselist=True)
 
 	
 	def set_photo(self, profile_pic):
 		self.profile_pic = profile_pic
 
-class Course(Base):
-	__tablename__ = 'course'
+class Hospital(Base):
+	__tablename__ = 'hospital'
 	id = Column(Integer, primary_key = True)
-	topic = Column(String) #multiple choice
 	name = Column(String)
-	difficulty = Column(String) #multiple choice
-	estimated_time = Column(String) #in minutes
-	description = Column(String)
-	#file = 
+	line_time = Column(Integer) #in minutes
+	availability = Column(String) #multiple choice
+	service = Column(Integer) #multiple choice
 	user_id = Column(Integer, ForeignKey('user.id'))
 	user = relationship("User")
+
+	def __getitem__(self, item):
+		return getattr(self, item)
