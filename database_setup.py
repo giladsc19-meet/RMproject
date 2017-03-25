@@ -33,6 +33,8 @@ class Hospital(Base):
 	line_time = Column(Integer) #in minutes
 	availability = Column(String) #multiple choice
 	service = Column(Integer) #multiple choice
+	area = Column(String) #multiple choice
+	city = Column(Integer) #multiple choice
 	user_id = Column(Integer, ForeignKey('user.id'))
 	user = relationship("User")
 

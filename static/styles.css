@@ -54,6 +54,9 @@ div.container.container-phone{
 .status-dot{
 	padding-left: 93%;
 }
+div.col-xs-2.col-md-2{
+	width: 50%;		
+}
 @media all and (max-width: 500px) {
 	div.container{
 		width: 100%;
@@ -115,5 +118,8 @@ div.container.container-phone{
 	}
 	.status-dot{
 	padding-left: 96%;
+	}
+	div.col-xs-2.col-md-2{
+		width: 100%;
 	}
 }

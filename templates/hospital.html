@@ -53,6 +53,23 @@
   </div>
 </nav>
 <br><br><br>
-<h1><b><u><i>{{ hospital.name }}</i></u></b></center></h1>
+<h1><b><center>{{ hospital.name }}</b></center></h1><br>
+<div class="container container-phone">
+	<div class="container" style="font-size:200%;">
+	area: {{hospital.area}}
+	<br>
+	city: {{hospital.area}}
+	<br>
+	availability: {%if hospital.availability=='1'%}
+	clear
+	{%elif hospital.availability=='2'%}
+	slight load
+	{%elif hospital.availability=='3'%}
+	busy
+	{%endif%}
+	</h5><br><br>
+	</div>
+	<center><iframe width="80%" height="450px" style="border-width:0px;" src="//www.google.com/maps/embed/v1/place?q={{hospital.name}}+Medical+Center,{{hospital.city}}%20Rd,%20IL&zoom=17&key=AIzaSyCuTLz6E1TwNU_W5Igi3MPPC8Cptt1ZnpU"></center>
+  </iframe>
 </body>
 </html>
