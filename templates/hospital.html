@@ -56,16 +56,16 @@
 <h1><b><center>{{ hospital.name }}</b></center></h1><br>
 <div class="container container-phone">
 	<div class="container" style="font-size:200%;">
-	area: {{hospital.area}}
+	Area: {{hospital.area}}
 	<br>
-	city: {{hospital.area}}
+	City: {{hospital.area}}
 	<br>
-	availability: {%if hospital.availability=='1'%}
-	clear
+	Availability: {%if hospital.availability=='1'%}
+	Clear
 	{%elif hospital.availability=='2'%}
-	slight load
+	Slight load
 	{%elif hospital.availability=='3'%}
-	busy
+	Busy
 	{%endif%}
 	</h5><br><br>
 	</div>
