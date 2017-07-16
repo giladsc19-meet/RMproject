@@ -58,7 +58,7 @@
 <div class="container container-phone">
 	<div class="row">
 {%for hosp in hospital%}
-		<h3><a href="{{url_for('hospital', hospital_id = hosp.id)}}"><div class="col-xs-4 col-md-4" style="background-color:#FF754F; padding-top:20px; margin-top:15px;"><center>{{hosp.name}}
+		<h3><a href="{{url_for('hospital', hospital_id = hosp.id)}}"><div class="col-xs-4 col-md-4" style="background-color:#000000; padding-top:20px; margin-top:15px;"><center><p style="color:#FFFFFF;">{{hosp.name}}</p>
     {%if hosp.availability=='1'%}
         <p class="status-dot" style="color:#30BF2D; font-size:20px; padding-top:120px;"> &#9673; </p>
     {%elif hosp.availability=='2'%}
