@@ -20,7 +20,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="{{url_for('home')}}">WebSiteName</a>
+      <a class="navbar-brand" href="{{url_for('home')}}">Fast101</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -53,20 +53,18 @@
   </div>
 </nav>
 <br><br><br>
-<h1><b><center>{{ hospital.name }}</b></center></h1><br>
-<div class="container container-phone">
-	<div class="container" style="font-size:200%;">
-	Area: {{hospital.area}}
-	<br>
-	City: {{hospital.area}}
-	<br>
-	Availability: {%if hospital.availability=='1'%}
+<h1><b><center>{{ hospital.name }} - {%if hospital.availability=='1'%}
 	Clear
 	{%elif hospital.availability=='2'%}
 	Slight load
 	{%elif hospital.availability=='3'%}
 	Busy
-	{%endif%}
+	{%endif%}</b></center></h1><br> <!-- replace with a colored status dot later on -->
+<div class="container container-phone">
+	<div class="container" style="font-size:200%;">
+	Position in Queue: X <!-- Need database rework and a way to aquire this data -->
+	<br>
+	Location: {{hospital.area}}
 	</h5><br><br>
 	</div>
 	<center><iframe width="80%" height="450px" style="border-width:0px;" src="https://www.google.com/maps/embed/v1/place?q={{hospital.name}}+Medical+Center,{{hospital.city}}%20Rd,%20IL&zoom=17&key=AIzaSyCuTLz6E1TwNU_W5Igi3MPPC8Cptt1ZnpU"></center>
